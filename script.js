@@ -28,10 +28,10 @@ button.id = "button";
 const clickButton = document.querySelector("#button")
 
 function showResults(a, b) {
-cuadro.appendChild(title);
-cuadro.appendChild(result);
-title.innerText = a;
-result.innerText = b;
+  cuadro.appendChild(title);
+  cuadro.appendChild(result);
+  title.innerText = a;
+  result.innerText = b;
 }
 
 /*  
@@ -71,16 +71,26 @@ function encodeConsonantWord(word) {
  let adFinal = "yay";
  let trato = referencia.split("");
  let prima = trato[0];
+ let segua = trato[1];
+ let delta = trato[0]+trato[1];
+ let final = ""
+
   for (let i = 0; i < vogals.length; i++ ){
-    if( prima !== vogals[i] ){
-      let palabra = trato.shift();
-      let strin = trato.join(",");
-      let final = strin + palabra +"-"+ adFinal;
-      console.log(strin);
-      showResults("consonan", final);
-    return final;
+    
+     let palabra = trato.shift();
+     let result = referencia.substring(1); 
+     let strin = trato.join(",");
+if(prima == "c" && segua == "h") {
+console.log(delta)
+  encodeWord(); 
+}else if( prima !== vogals[i] && segua !== "h" ){
+       final = result + prima +"-"+ adFinal;
+ //     console.log(strin);
+ //     console.log(referencia);
+      showResults("consonantPig", final);
     }
   }
+    return final;
    
 }
 
@@ -96,14 +106,25 @@ function encodeConsonantWord(word) {
         "you" becomes "ou-yay" because it starts with a consonant "y"
 */
 function encodeWord(word) {
-  return ''; // replace this!
+ let referencia = palabra.value;
+ let demas = "ay" 
+ let final = "";
+ let ultima = "";
+ let ch = referencia.substring(0,2);   
+      final = referencia.slice(2);
+      ultima = final+"-"+ch+demas;
+      showResults("consChPig", ultima);
+  return ultima; // replace this!
 }
 
 /*
     STEP # 4: Encode a full sentence or paragraph from english to pig latin.
 */
+
 function encodeText(text) {
-  return ''; // replace this!
+ let referencia = palabra.value.split(" ");
+  showResults("texto", referencia)
+  return referencia; // replace this!
 }
 
 /*
@@ -157,10 +178,21 @@ function decodeWord(word) {
 function decodeText(text) {
   return ''; // replace this!
 }
-
+const key = document.addEventListener("keydown", (event) =>{
+  let keyName = event.key
+  if(keyName == "Enter"){
+  event.preventDefault();
+//    encodeWord();
+    encodeVowelWord();
+    encodeText();
+  }
+// console.log(event) 
+} )
 clickButton.addEventListener("click", function(){
     const palabra = document.getElementById("palabra").value;
+//    encodeWord();
     encodeVowelWord();
+    encodeText();
     //showResults(palabra, "palabra");
 })
 

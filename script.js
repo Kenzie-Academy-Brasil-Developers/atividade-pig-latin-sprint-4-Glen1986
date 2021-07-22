@@ -4,8 +4,25 @@ const box = document.createElement("input");
 const title= document.createElement("h2");
 const result = document.createElement("p");
 const button = document.createElement("button");
+const header = document.getElementById("header");
+const section = document.createElement("section");
+const cerdoL = document.createElement("figure");
+const cerdoR = document.createElement("figure");
+const imgL = document.createElement("img");
+const imgR = document.createElement("img");
 
 const vogals = "a,e,i,o,u".split(",")
+
+header.appendChild(section);
+section.appendChild(cerdoL);
+section.appendChild(cerdoR);
+
+cerdoL.appendChild(imgL);
+cerdoR.appendChild(imgR);
+
+
+imgL.setAttribute("src", "./img/pig1.png");
+imgR.setAttribute("src", "./img/pig2.jpg");
 
 body.appendChild(cuadro);
 body.appendChild(button);
@@ -184,7 +201,7 @@ const key = document.addEventListener("keydown", (event) =>{
   event.preventDefault();
 //    encodeWord();
     encodeVowelWord();
-    encodeText();
+ //   encodeText();
   }
 // console.log(event) 
 } )
@@ -192,7 +209,7 @@ clickButton.addEventListener("click", function(){
     const palabra = document.getElementById("palabra").value;
 //    encodeWord();
     encodeVowelWord();
-    encodeText();
+//    encodeText();
     //showResults(palabra, "palabra");
 })
 
